@@ -34,22 +34,25 @@ def main():
     # =========================
     # Settings
     # =========================
-    arms = 10
-    bandit_probs = []
     
-    for i in range(arms):
-        bandit_probs.append(float(str(np.random.random())[:4]))# bandit probabilities of success
         
-        
-    N_experiments = 10  # number of experiments to perform
+    arms = 10
+    N_experiments = 1000  # number of experiments to perform
     N_episodes = 10000  # number of episodes per experiment
-    epsilon = 0.1  # probability of random exploration (fraction)
+    epsilon = 0.4  # probability of random exploration (fraction)
     save_fig = True  # if false -> plot, if true save as file in same directory
     verbose = False
 
-
+    
+    
+    
+    bandit_probs = []
+    for i in range(arms):
+        bandit_probs.append(float(str(np.random.random())[:4]))# bandit probabilities of success
+        
+    
     curTime = time.time()
-    path = "output\\" + str(curTime)
+    path = "output\\{}_Arm{}_Exp{}_Ep{}_Eps{}".format(str(curTime)[6:11], arms, N_experiments, N_episodes, epsilon)
     
     
     

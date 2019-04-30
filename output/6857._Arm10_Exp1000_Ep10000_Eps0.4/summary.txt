@@ -1,0 +1,10 @@
+Summary:
+
+Experiments: 1000
+Episodes per experiment: 10000
+Exploration chance: 0.4
+
+Elapsed time: 126 seconds
+
+Bandit arms: 10
+Bandit probs: [0.74, 0.52, 0.37, 0.63, 0.82, 0.97, 0.77, 0.74, 0.71, 0.38]
