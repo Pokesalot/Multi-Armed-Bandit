@@ -1,0 +1,6 @@
+Summary:
+
+Experiments: 250
+Episodes per experiment: 10000
+Exploration chance: 0.1
+Elapsed time: 37.69655084609985
