@@ -36,10 +36,10 @@ def main():
     # =========================
     
         
-    arms = 10
-    N_experiments = 1000  # number of experiments to perform
-    N_episodes = 10000  # number of episodes per experiment
-    epsilon = 0.4  # probability of random exploration (fraction)
+    arms = 100
+    N_experiments = 2000  # number of experiments to perform
+    N_episodes = 500  # number of episodes per experiment
+    epsilon = 0.3  # probability of random exploration (fraction)
     save_fig = True  # if false -> plot, if true save as file in same directory
     verbose = False
 
@@ -48,7 +48,7 @@ def main():
     
     bandit_probs = []
     for i in range(arms):
-        bandit_probs.append(float(str(np.random.random())[:4]))# bandit probabilities of success
+        bandit_probs.append(float(str(np.random.random())[:5]))# bandit probabilities of success
         
     
     curTime = time.time()
@@ -186,15 +186,17 @@ def main():
     plt.title("Bandit action history averaged over {} experiments (epsilon = {})".format(N_experiments, epsilon), fontsize=26)
     plt.xlabel("Episode Number", fontsize=26)
     plt.ylabel("Bandit Action Choices (%)", fontsize=26)
-    leg = plt.legend(loc='upper left', shadow=True, fontsize=26)
+
     ax = plt.gca()
     ax.set_xscale("log", nonposx='clip')
     plt.xlim([1, N_episodes])
     plt.ylim([0, 100])
     plt.xticks(fontsize=24)
     plt.yticks(fontsize=24)
-    for legobj in leg.legendHandles:
-        legobj.set_linewidth(16.0)
+    if arms <= 10:
+        leg = plt.legend(loc='upper left', shadow=True, fontsize=26)
+        for legobj in leg.legendHandles:
+            legobj.set_linewidth(16.0)
     if save_fig:
         output_file = path + "\\actions.png"
         plt.savefig(output_file, bbox_inches="tight")
@@ -204,7 +206,7 @@ def main():
     
     output = open(path + "\\summary.txt", "w")
     output.write("Summary:\n\nExperiments: {}\nEpisodes per experiment: {}\nExploration chance: {}\n\nElapsed time: {} seconds\n\n".format(N_experiments, N_episodes, epsilon, deltaTime))
-    output.write("Bandit arms: {}\nBandit probs: {}".format(len(bandit_probs), bandit_probs))
+    output.write("Bandit arms: {}\nBandit probs: {}".format(len(bandit_probs), bandit_probs if arms <= 10 else sorted(bandit_probs, reverse=True)))
     output.close()
 
 # Driver
