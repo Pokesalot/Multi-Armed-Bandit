@@ -36,10 +36,10 @@ def main():
     # =========================
     
         
-    arms = 100
-    N_experiments = 2000  # number of experiments to perform
-    N_episodes = 500  # number of episodes per experiment
-    epsilon = 0.3  # probability of random exploration (fraction)
+    arms = 10
+    N_experiments = 100  # number of experiments to perform
+    N_episodes = 10000  # number of episodes per experiment
+    epsilon = 0.1 # probability of random exploration (fraction)
     save_fig = True  # if false -> plot, if true save as file in same directory
     verbose = False
 
